@@ -1,0 +1,25 @@
+substitutions:
+  name: esphome-web-c822b4-c822b4
+  friendly_name: esp-btproxy01
+
+packages:
+  esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic.yaml@main
+
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+  friendly_name: ${friendly_name}
+
+api:
+  encryption:
+    key: xxx
+
+light:
+  - platform: status_led
+    name: "Switch Status LED State"
+    pin: 
+      number: GPIO2
+    
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
