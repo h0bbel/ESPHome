@@ -1,0 +1,40 @@
+esphome:
+  name: esphome-web-d3211c
+  friendly_name: esp-sensor01
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: <key>
+
+ota:
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: <ssid>
+    password: <password>
+
+captive_portal:
+
+sensor:
+  - platform: dht
+    pin: GPIO2
+    temperature:
+      name: "esp-sensor01 Temperature"
+    humidity:
+      name: "esp-sensor01 Humidity"
+    update_interval: 60s
+    model: DHT22
